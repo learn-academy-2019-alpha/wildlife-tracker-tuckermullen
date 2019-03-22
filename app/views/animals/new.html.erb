@@ -1,0 +1,14 @@
+<h2 class="title">Create a New Animal</h2>
+
+<%= form_for @animal do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br/>
+    
+    <%= f.label :latin_name %>
+    <%= f.text_field :latin_name %><br/>
+    
+    <%= f.label :kingdom %>
+    <%= f.text_field :kingdom %><br/>
+    <br/>
+    <%= f.submit "Create New Animal", class: "button is-success" %>
+<% end %>

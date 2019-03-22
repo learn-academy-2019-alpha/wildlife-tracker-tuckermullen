@@ -1,0 +1,17 @@
+<h2 class="title">Create a New Animal Sighting</h2>
+
+<%= form_for @sighting do |f| %>
+    <%= f.label :date %>
+    <%= f.text_field :date %><br/>
+    
+    <%= f.label :time %>
+    <%= f.text_field :time %><br/>
+    
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %><br/>
+    
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %><br/>
+    <br/>
+    <%= f.submit "Create New Animal Sighting", class: "button is-success" %>
+<% end %>

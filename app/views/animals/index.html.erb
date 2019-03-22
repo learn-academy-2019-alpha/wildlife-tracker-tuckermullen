@@ -1,0 +1,19 @@
+<h1 class="title"><strong>Animals</strong></h1>
+<hr/>
+
+<div class="columns">
+    <% @animals.each do |animal| %>
+        <div class="column">
+            <p><strong>Animal #: </strong><%= animal.id %></p>
+            <p><strong>Name: </strong><%= animal.name %></p>
+            <p><strong>Latin Name:</strong> <%= animal.latin_name %></p>
+            <p><strong>Kingdom: </strong><%= animal.kingdom %></p>
+            <br/>
+            <%= link_to "Create New Animal", new_animal_path, class: "button is-success" %><br/>
+            <%= link_to "View #{animal.name} Info", animal_path(animal), class: "button is-dark" %><br/>
+            <%= link_to "Edit #{animal.name}", edit_animal_path(animal), class: "button is-warning" %><br/>
+            <%= link_to "Delete #{animal.name}", animal, method: :delete, data: { confirm: "Are you sure you want to delete this animal?" }, class: "button is-danger" %>
+            <hr />
+            </div>
+    <% end %>
+</div>

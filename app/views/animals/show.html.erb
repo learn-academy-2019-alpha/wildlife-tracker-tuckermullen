@@ -1,0 +1,38 @@
+<h3 class="title is-4"><strong><%= @animal.name %></strong></h3>
+<hr/>
+<p class="subtitle"><strong>Latin Name: </strong><%= @animal.latin_name %></p>
+<p class="subtitle"><strong>Kingdom: </strong><%= @animal.kingdom %></p>
+<hr/>
+<h3 class="title is-4">Total Sightings: <%= @animal.sightings.count %></h3>
+<br/>
+<% @animal.sightings.each do |sighting| %>
+    <div class="content">
+        <p class="subtitle is-5">Date: <%= sighting.date %></p>
+        <p class="subtitle is-5">Time: <%= sighting.time %></p>
+        <p class="subtitle is-5">Latitude: <%= sighting.latitude %></p>
+        <p class="subtitle is-5">Longitude: <%= sighting.longitude %></p>
+        <%= link_to "Update Sighting ID#: #{sighting.id}", edit_animal_sighting_path(@animal, sighting), class: "button is-warning" %>
+        <%= link_to "Delete Sighting ID#: #{sighting.id}", animal_sighting_path(@animal, sighting), method: :delete, data: { confirm: "Are you sure you want to delete this sighting?" }, class: "button is-danger" %>
+    </div>
+<% end %>
+<hr />
+<h2 class="title is-4">Create a New Sighting For <%= @animal.name %></h2>
+
+<%= form_for [@animal, @animal.sightings.build] do |f| %>
+    <%= f.label :date %>
+    <%= f.text_field :date %><br/>
+    
+    <%= f.label :time %>
+    <%= f.text_field :time %><br/>
+    
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %><br/>
+    
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %><br/>
+    <br/>
+    <%= f.label :region %>
+    <%= f.collection_select :region %>
+    <br/>
+    <%= f.submit "Create New Sighting", class: "button is-success" %>
+<% end %>
